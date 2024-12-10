@@ -23,14 +23,16 @@ if (!process.env.MONGO) {
 }
 
 // Connect to MongoDB
+// Connect to MongoDB
 mongoose
-  .connect(process.env.MONGO, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(process.env.MONGO)
   .then(() => {
     console.log('Connected to MongoDB!');
   })
   .catch((err) => {
     console.error('MongoDB connection error:', err);
   });
+
 
 // CORS configuration
 app.use(
