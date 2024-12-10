@@ -10,7 +10,7 @@ export default defineConfig(({ mode }) => {
     config.server = {
       proxy: {
         '/api': {
-          target: 'http://localhost:3000',
+          target: 'https://heaven-hub-estate-api.vercel.app',
           secure: false,
         },
       },
