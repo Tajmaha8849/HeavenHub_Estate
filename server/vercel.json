@@ -2,18 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/**/*.js", 
+      "src": "index.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
-      "src": "/api/(.*)", 
-      "dest": "/api/$1"   
+      "src": "/api/(.*)",
+      "dest": "index.js"
     }
-  ],
-  "env": {
-    "MONGO_URI": "mongodb+srv://shubhamprajapati9537:S1hubham@cluster0.mwyn4.mongodb.net/RealEstate?retryWrites=true&w=majority&appName=Cluster0",      
-    "JWT_SECRET": "surgywe648ebuyw3tviuey4btesygir"    
-  }
-}
+  ]
+}  this is vercel.json already for backend make changes is required
