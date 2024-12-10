@@ -2,11 +2,32 @@
   "version": 2,
   "builds": [
     {
-      "src": "server/index.js",
+      "src": "api/index.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
-    { "src": "/server/(.*)", "dest": "server/index.js" }
-  ]
+    {
+      "src": "/api/auth/(.*)",
+      "dest": "api/index.js"
+    },
+    {
+      "src": "/api/listing/(.*)",
+      "dest": "api/index.js"
+    },
+    {
+      "src": "/api/user/(.*)",
+      "dest": "api/index.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "api/index.js"
+    }
+  ],
+  "env": {
+    "PORT": "3000",
+    "MONGO": "mongodb+srv://shubhamprajapati9537:S1hubham@cluster0.mwyn4.mongodb.net/RealEstate?retryWrites=true&w=majority&appName=Cluster0",
+    "FRONTEND_URL": "https://heaven-hub-estate.vercel.app",
+    "JWT_SECRET": "surgywe648ebuyw3tviuey4btesygir"
+  }
 }
