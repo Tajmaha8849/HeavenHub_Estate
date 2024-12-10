@@ -2,14 +2,18 @@
   "version": 2,
   "builds": [
     {
-      "src": "index.js",
+      "src": "api/**/*.js", // Match all API files dynamically in the /api folder
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "index.js"
+      "src": "/api/(.*)", // All routes starting with /api
+      "dest": "/api/$1"   // Dynamically resolve to matching file
     }
-  ]
+  ],
+  "env": {
+    "MONGO_URI": "@mongo_uri",      // Replace with your Vercel environment variable
+    "JWT_SECRET": "@jwt_secret"    // Replace with your Vercel environment variable
+  }
 }
