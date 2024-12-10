@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/:path*", // Any request to /api will be proxied
+      "destination": "https://heaven-hub-estate-api.vercel.app/api/:path*"
+    }
+  ]
+}
