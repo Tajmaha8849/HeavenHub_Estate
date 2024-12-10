@@ -37,7 +37,7 @@ mongoose
 // CORS configuration
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL || 'https://your-frontend-url.vercel.app',
+    origin: process.env.FRONTEND_URL || 'https://heaven-hub-estate.vercel.app',
     credentials: true,
   })
 );
