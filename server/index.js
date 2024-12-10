@@ -9,6 +9,10 @@ import cors from 'cors';
 
 dotenv.config();
 
+// Root route
+app.get('/', (req, res) => {
+  res.send('Welcome to the API!');
+});
 // Ensure MONGO_URI is set
 if (!process.env.MONGO) {
   throw new Error('MONGO_URI is not defined');
@@ -47,10 +51,7 @@ app.use('/api/user', userRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/listing', listingRouter);
 
-// Root route
-app.get('/', (req, res) => {
-  res.send('Welcome to the API!');
-});
+
 
 // Error handling middleware
 app.use((err, req, res, next) => {
