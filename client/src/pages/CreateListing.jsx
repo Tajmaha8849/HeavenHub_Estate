@@ -6,6 +6,7 @@ import {
   uploadBytesResumable,
 } from 'firebase/storage';
 import { app } from '../firebase';
+import {app1} from '../firebase1'
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -62,7 +63,7 @@ export default function CreateListing() {
 
   const storeImage = async (file) => {
     return new Promise((resolve, reject) => {
-      const storage = getStorage(app);
+      const storage = getStorage(app1);
       const fileName = new Date().getTime() + file.name;
       const storageRef = ref(storage, fileName);
       const uploadTask = uploadBytesResumable(storageRef, file);
