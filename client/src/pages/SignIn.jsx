@@ -22,27 +22,34 @@ export default function SignIn() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      dispatch(signInStart());
-      const res = await fetch('/api/auth/signin', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-      const data = await res.json();
-      if (data.success === false) {
-        dispatch(signInFailure(data.message));
-        return;
-      }
-      dispatch(signInSuccess(data));
-      navigate('/');
-    } catch (error) {
-      dispatch(signInFailure(error.message));
+  e.preventDefault();
+  try {
+    dispatch(signInStart());
+    const res = await fetch('/api/auth/signin', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    });
+
+    if (!res.ok) {
+      const errorText = await res.text(); // Handle non-JSON responses
+      dispatch(signInFailure(errorText || 'An error occurred.'));
+      return;
     }
-  };
+
+    const data = await res.json();
+    if (data.success === false) {
+      dispatch(signInFailure(data.message));
+      return;
+    }
+    dispatch(signInSuccess(data));
+    navigate('/');
+  } catch (error) {
+    dispatch(signInFailure(error.message || 'Something went wrong.'));
+  }
+};
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-100 to-gray-200 flex items-center justify-center p-5">
