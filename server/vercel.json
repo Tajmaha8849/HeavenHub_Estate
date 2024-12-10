@@ -2,18 +2,18 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/**/*.js", // Match all API files dynamically in the /api folder
+      "src": "api/**/*.js", 
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
-      "src": "/api/(.*)", // All routes starting with /api
-      "dest": "/api/$1"   // Dynamically resolve to matching file
+      "src": "/api/(.*)", 
+      "dest": "/api/$1"   
     }
   ],
   "env": {
-    "MONGO_URI": "@mongo_uri",      // Replace with your Vercel environment variable
-    "JWT_SECRET": "@jwt_secret"    // Replace with your Vercel environment variable
+    "MONGO_URI": "mongodb+srv://shubhamprajapati9537:S1hubham@cluster0.mwyn4.mongodb.net/RealEstate?retryWrites=true&w=majority&appName=Cluster0",      
+    "JWT_SECRET": "surgywe648ebuyw3tviuey4btesygir"    
   }
 }
