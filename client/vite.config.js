@@ -1,17 +1,21 @@
-
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
 
-// https://vitejs.dev/config/
-export default defineConfig({
-  server: {
-    proxy: {
-      '/api': {
-        target: 'http://localhost:3000',
-        secure: false,
-      },
-    },
-  },
+export default defineConfig(({ mode }) => {
+  const config = {
+    plugins: [react()],
+  };
 
-  plugins: [react()],
+  if (mode === 'development') {
+    config.server = {
+      proxy: {
+        '/api': {
+          target: 'http://localhost:3000',
+          secure: false,
+        },
+      },
+    };
+  }
+
+  return config;
 });
