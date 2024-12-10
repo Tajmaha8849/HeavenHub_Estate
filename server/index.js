@@ -9,10 +9,14 @@ import cors from 'cors';
 
 dotenv.config();
 
-// Root route
+// Initialize Express app
+const app = express();
+
+// Root route should come after initializing the app
 app.get('/', (req, res) => {
   res.send('Welcome to the API!');
 });
+
 // Ensure MONGO_URI is set
 if (!process.env.MONGO) {
   throw new Error('MONGO_URI is not defined');
@@ -27,8 +31,6 @@ mongoose
   .catch((err) => {
     console.error('MongoDB connection error:', err);
   });
-
-const app = express();
 
 // CORS configuration
 app.use(
@@ -50,8 +52,6 @@ app.get('/health', (req, res) => {
 app.use('/api/user', userRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/listing', listingRouter);
-
-
 
 // Error handling middleware
 app.use((err, req, res, next) => {
