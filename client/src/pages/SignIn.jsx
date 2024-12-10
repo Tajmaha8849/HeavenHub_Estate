@@ -22,10 +22,11 @@ export default function SignIn() {
   };
 
   const handleSubmit = async (e) => {
+    const BASE_URL = 'https://heaven-hub-estate-api.vercel.app';
     e.preventDefault();
     try {
       dispatch(signInStart());
-      const res = await fetch('/api/auth/signin', {
+      const res = await fetch(`${BASE_URL}/api/auth/signin`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
